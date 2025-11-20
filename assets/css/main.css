@@ -1066,6 +1066,13 @@ p {
 
 
 /* ====== feature css ====== */
+.feature-section {
+    background-image: url("../img/gallery/white-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
+}
 
 @media (max-width: 767px) {
     .feature-section.pt-120 {
@@ -1076,6 +1083,7 @@ p {
 .feature-section .single-feature {
     text-align: center;
     padding: 30px 10px;
+    
 }
 
 @media only screen and (min-width: 1400px) {
@@ -1088,7 +1096,7 @@ p {
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    background: #1266cc45;
+    background: #DCE8F7;
     color: #032a60;
     margin: auto;
     margin-bottom: 30px;
@@ -1236,10 +1244,15 @@ p {
 
 /* ===== Team css ===== */
 
+.team-section {
+    background-color: #032a60d6;
+}
+
 .team-item {
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 45px rgba(255, 255, 255, 0.07);
 }
 
 .team-item img {
@@ -1259,10 +1272,10 @@ p {
     transition: .5s;
 }
 
-.team-item:hover .team-text {
+/* .team-item:hover .team-text {
     bottom: 0;
     opacity: 1;
-}
+} */
 
 .team-item a.btn {
     color: #032a60;
@@ -1343,6 +1356,7 @@ p {
 /* 1. Jadikan section utama sebagai "jangkar" dan sembunyikan overflow */
 
 .Business-section {
+    background-color: #f0f0f0;
     position: relative;
     overflow: hidden;
 }
@@ -1694,7 +1708,7 @@ p {
  */
 
 .location-section {
-    background-color: #f8f9fa;
+    background-color: #f0f0f0;
     /* Latar abu-abu muda */
 }
 
@@ -1821,9 +1835,13 @@ p {
 /* Latar belakang section */
 
 .gallery-section {
-    background-color: #f8f9fa;
-    /* Latar putih */
+    background-image: url("../img/gallery/white-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
 }
+
 
 
 /* Kartu galeri */
@@ -1944,7 +1962,7 @@ p {
     /* TETAPKAN UKURAN: Tinggi seragam 80px */
     width: auto;
     /* Lebar otomatis agar logo tidak gepeng */
-    margin: 0 40px;
+    margin: 0 10px;
     /* Jarak antar logo */
     /* Penyesuaian TEMA: 
        Buat logo jadi grayscale agar seragam dan profesional.
@@ -1985,6 +2003,19 @@ p {
 .about-section {
     position: relative;
     z-index: 1;
+}
+
+.hidden-content {
+    /* Menyembunyikan elemen */
+    display: none; 
+    
+    /* Opsional: Tambahkan transisi jika Anda ingin animasi saat muncul */
+    /* transition: all 0.5s ease-in-out; */ 
+}
+
+.visible-content {
+    /* Kelas ini akan ditambahkan oleh JavaScript */
+    display: block; 
 }
 
 @media (max-width: 767px) {
@@ -2138,9 +2169,8 @@ p {
 
 /* ====== feature-extended css ====== */
 
-.feature-extended-section .feature-extended-wrapper {
-    padding: 70px 0;
-    background: #bfd6f18c;
+.feature-extended-section {
+    background: #DCE8F7;
 }
 
 .feature-extended-section .single-feature-extended {
@@ -2178,6 +2208,7 @@ p {
 
 
 /* ======= subscribe css ======= */
+
 
 @media (max-width: 767px) {
     .subscribe-section .section-title h2 {
@@ -2369,6 +2400,18 @@ p {
 
 .footer .widget-wrapper .footer-widget ul.links li a:hover {
     padding-left: 8px;
+}
+
+/* 1. Atur Properti Dasar pada Tautan (agar padding berfungsi) */
+.footer .map p {
+    display: inline-block; /* PENTING: Mengizinkan padding dan transisi */
+    transition: padding-left 0.3s ease, color 0.3s ease; /* Membuat efek pergeseran halus */
+}
+
+/* 2. Atur Efek Saat Hover */
+.footer .map p:hover {
+    color: #ffffff; /* Pastikan warnanya tetap putih (atau ganti ke warna lain jika Anda mau) */
+    padding-left: 8px; /* Efek Pergeseran ke kanan */
 }
 
 .mt-5 {
