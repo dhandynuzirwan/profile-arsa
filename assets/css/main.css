@@ -1242,28 +1242,60 @@ p {
 }
 
 
-/* ===== Team css ===== */
+/* ===== jadwal css ===== */
 
-.team-section {
+.jadwal-section {
     background-color: #032a60d6;
 }
 
-.team-item {
+/* Mengubah warna default bg-primary (Biru Standar) menjadi Biru Tua Arsa */
+.bg-primary {
+    background-color: #032a60 !important; /* Kode Hex Biru Tua */
+}
+
+/* Jika Anda ingin tombol primary juga berubah */
+.btn-primary {
+    background-color: #032a60 !important;
+    border-color: #032a60 !important;
+}
+
+.btn-primary:hover {
+    background-color: #0a3678 !important; /* Biru lebih gelap untuk efek hover */
+    border-color: #0a3678 !important;
+}
+
+/* Mengubah warna teks primary (misal: judul "INFO") */
+.text-primary {
+    color: #032a60 !important;
+}
+
+/* Khusus untuk border tombol outline */
+.btn-outline-primary {
+    color: #032a60 !important;
+    border-color: #032a60 !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #032a60 !important;
+    color: #ffffff !important;
+}
+
+.jadwal-item {
     position: relative;
     overflow: hidden;
     background-color: #FFFFFF;
     box-shadow: 0 0 45px rgba(255, 255, 255, 0.07);
 }
 
-.team-item img {
+.jadwal-item img {
     transition: .5s;
 }
 
-.team-item:hover img {
+.jadwal-item:hover img {
     transform: scale(1.1);
 }
 
-.team-text {
+.jadwal-text {
     position: absolute;
     width: 100%;
     left: 0;
@@ -1272,19 +1304,37 @@ p {
     transition: .5s;
 }
 
-/* .team-item:hover .team-text {
+/* .jadwal-item:hover .jadwal-text {
     bottom: 0;
     opacity: 1;
 } */
 
-.team-item a.btn {
-    color: #032a60;
+.jadwal-item a.btn {
+    color: #ffffff;
 }
 
-.team-item a.btn:hover {
+.jadwal-item a.btn:hover {
     color: #FFFFFF;
-    background: #032a60;
-    border-color: #032a60;
+    background: #ffffff;
+    border-color: #ffffff;
+}
+
+.jadwal-section .btn-download .btn {
+    background-color: transparent; /* Membuat latar belakang transparan */
+    border: 2px solid #ffffff;     /* Garis pinggir (border) warna putih */
+    color: #ffffff;                /* Warna teks dan ikon putih */
+    font-weight: 600;              /* Menebalkan font sedikit */
+    padding: 12px 30px;            /* Menambah ruang di dalam tombol agar lebih gagah */
+    transition: all 0.3s ease;     /* Efek transisi halus */
+}
+
+/* Style Hover (Saat kursor diarahkan) */
+.jadwal-section .btn-download .btn:hover {
+    background-color: #ffffff;     /* Latar berubah jadi putih */
+    color: #032a60;                /* Teks berubah jadi biru tua (sesuai tema) */
+    border-color: #ffffff;         /* Border tetap putih */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Efek bayangan */
+    transform: translateY(-3px);   /* Efek naik sedikit */
 }
 
 
@@ -1595,7 +1645,7 @@ p {
 
 .legality-list .icon {
     font-size: 24px;
-    color: #0d47a1;
+    color: #032a60;
     /* Warna biru tua primer Anda */
     margin-right: 15px;
     margin-top: 5px;
@@ -1679,9 +1729,9 @@ p {
 /* 2. Style HOVER (Saat Kursor Di Atas) */
 
 .qr-code-box:hover {
-    background-color: #0d47a1;
+    background-color: #032a60;
     /* Latar menjadi BIRU TUA */
-    border-color: #0d47a1;
+    border-color: #032a60;
 }
 
 .qr-code-box:hover a img {
@@ -1873,7 +1923,7 @@ p {
 
 .gallery-card .gallery-tag {
     display: inline-block;
-    background-color: #0d47a1;
+    background-color: #032a60;
     /* Biru tua primer Anda */
     color: #ffffff;
     padding: 4px 10px;
