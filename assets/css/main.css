@@ -1349,7 +1349,6 @@ p {
     /* z-index: 3; */
 }
 
-
 /* EFEK HOVER UNTUK SLIDE UP */
 
 .service-item:hover {
@@ -1374,6 +1373,7 @@ p {
 
 .service-item a.btn {
     color: #032a60;
+    border: 2px solid #032a60;
 }
 
 .service-item a.btn:hover {
@@ -1607,6 +1607,22 @@ p {
 .modal-training .modal-body .bi .h6 {
     color: #ffffff;
     /* Warna biru primary (atau ganti sesuai tema Anda) */
+}
+
+/* FORM DAFTAR */
+/* Styling untuk Form Pendaftaran */
+.registration-section {
+    background-color: #f0f6ff; /* Senada dengan testimonial */
+}
+
+.registration-section .form-control:focus,
+.registration-section .form-select:focus {
+    border-color: #0d47a1; /* Warna biru tua saat diklik */
+    box-shadow: 0 0 0 0.25rem rgba(13, 71, 161, 0.25);
+}
+
+.registration-section .card {
+    border-radius: 15px;
 }
 
 
@@ -2045,6 +2061,80 @@ p {
         */
         transform: translateX(-50%);
     }
+}
+
+/*
+ * Styling untuk Section Testimoni
+ */
+
+.testimonial-section {
+    background-color: #f0f6ff; /* Biru sangat muda (hampir putih) untuk membedakan dengan section sebelumnya */
+}
+
+.testimonial-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    transition: all 0.3s ease;
+    height: 100%;
+    border-left: 5px solid #0d47a1; /* Aksen Biru Tua di kiri */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Ikon Kutipan Besar di Background */
+.testimonial-card .quote-icon {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 60px;
+    color: rgba(13, 71, 161, 0.1); /* Biru tua transparan */
+}
+
+.testimonial-card .review-text {
+    font-style: italic;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Styling Footer Kartu (Profil User) */
+.testimonial-card .card-footer {
+    background: transparent;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: auto;
+}
+
+.testimonial-card .user-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #0d47a1; /* Border foto biru tua */
+}
+
+.testimonial-card .user-info h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0d47a1;
+    margin-bottom: 2px;
+}
+
+.testimonial-card .user-info small {
+    color: #777;
+    font-size: 0.85rem;
+}
+
+/* Efek Hover */
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -3182,4 +3272,48 @@ p {
 
 .pb-225 {
     padding-bottom: 225px;
+}
+
+/* * Floating WhatsApp Button Styling 
+ */
+.float-wa {
+    position: fixed; /* Tetap di tempat saat di-scroll */
+    width: 60px;
+    height: 60px;
+    bottom: 100px; /* Jarak dari bawah */
+    right: 30px;  /* Jarak dari kanan */
+    background-color: #25d366; /* Warna hijau resmi WhatsApp */
+    color: #FFF;
+    border-radius: 50%; /* Membuatnya bulat sempurna */
+    text-align: center;
+    font-size: 30px; /* Ukuran ikon */
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2); /* Bayangan */
+    z-index: 1000; /* Pastikan selalu di atas elemen lain */
+    
+    /* Flexbox untuk menengahkan ikon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Transisi halus */
+    transition: all 0.3s ease;
+}
+
+/* Efek Hover */
+.float-wa:hover {
+    background-color: #128C7E; /* Warna hijau WA yang lebih gelap */
+    color: #ffffff;
+    transform: scale(1.1); /* Sedikit membesar saat di-hover */
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+}
+
+/* Responsif untuk layar HP (tombol sedikit lebih kecil) */
+@media (max-width: 768px) {
+    .float-wa {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+    }
 }
