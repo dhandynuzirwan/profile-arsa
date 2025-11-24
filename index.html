@@ -1133,30 +1133,62 @@
                         </div>
 
                         <form name="submit-to-google-sheet">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="nama" name="Nama Lengkap" placeholder="Nama Lengkap" required>
-                                <label for="nama">Nama Lengkap</label>
-                            </div>
                             
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="whatsapp" name="No WhatsApp" placeholder="No WhatsApp" required>
-                                <label for="whatsapp">No WhatsApp (Wajib)</label>
+                                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" required>
+                                <label for="nama_lengkap">Nama Lengkap</label>
+                            </div>
+
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="number" class="form-control" id="telephone" name="telephone" placeholder="No WA/Telp" required>
+                                        <label for="telephone">No WhatsApp/Telephone</label>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="email" name="Email" placeholder="Email">
-                                <label for="email">Alamat Email</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="program" name="Pilihan Program" required>
-                                    <option selected disabled value="">Pilih Program...</option>
-                                    <option value="KEMNAKER RI">Sertifikasi KEMNAKER RI</option>
-                                    <option value="BNSP">Sertifikasi BNSP</option>
-                                    <option value="Softskill">Training Softskill</option>
-                                    <option value="Lainnya">Konsultasi Lainnya</option>
+                                <select class="form-select" id="kategori_peserta" name="kategori_peserta" required>
+                                    <option selected disabled value="">Pilih Kategori...</option>
+                                    <option value="Perusahaan">Perusahaan (Utusan Kantor)</option>
+                                    <option value="Pribadi">Umum / Pribadi</option>
                                 </select>
-                                <label for="program">Program yang Diminati</label>
+                                <label for="kategori_peserta">Kategori Peserta</label>
+                            </div>
+        
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="sertifikasi" name="sertifikasi" required>
+                                            <option selected disabled value="">Jenis Sertifikasi...</option>
+                                            <option value="KEMNAKER RI">KEMNAKER RI</option>
+                                            <option value="BNSP">BNSP</option>
+                                            <option value="Softskill">Softskill</option>
+                                        </select>
+                                        <label for="sertifikasi">Jenis Sertifikasi</label>
+                                    </div>
+        
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="program" name="program" placeholder="Contoh: Ahli K3 Umum" required>
+                                        <label for="program">Judul Program (Contoh: Ahli K3 Umum)</label>
+                                    </div>
+
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="sumber" name="sumber" required>
+                                    <option selected disabled value="">Mengetahui Arsa dari...</option>
+                                    <option value="Instagram">Instagram</option>
+                                    <option value="LinkedIn">LinkedIn</option>
+                                    <option value="Website/Google">Website / Google Search</option>
+                                    <option value="Rekan/Kerabat">Rekan / Kerabat</option>
+                                    <option value="Email Marketing">Email Marketing</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                                <label for="sumber">Info Dari Mana?</label>
                             </div>
 
                             <button type="submit" class="btn btn-primary w-100 py-3 fw-bold btn-kirim">
@@ -1917,10 +1949,11 @@
                             </p>
                         </div>
                         <div class="mb-15">
-                            <form action="#" class="subscribe-form">
-                                <input type="email" name="subs-email" id="subs-email" placeholder="Pesan" />
+                            <form id="waForm" class="subscribe-form">
+                                <input type="text" id="waMessage" placeholder="Tulis pesan Anda di sini..." required />
+                                
                                 <button type="submit" class="main-btn btn-hover">
-                                Kirim <i class="lni lni-whatsapp"></i>
+                                    Kirim <i class="lni lni-whatsapp"></i>
                                 </button>
                             </form>
                         </div>
@@ -2025,6 +2058,73 @@
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+        // URL Web App dari Google Apps Script (Langkah 1)
+        // Contoh: https://script.google.com/macros/s/AKfycbx.../exec
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby6Fxq2Y0YPIpOEa8-5g8QdJ8kOXvo9sJkg25cD_TfHUOjmLYevzVoGteZ0ccZGZ47weQ/exec'; 
+        
+        const form = document.forms['submit-to-google-sheet'];
+        const btnKirim = document.querySelector('.btn-kirim');
+        const btnLoading = document.querySelector('.btn-loading');
+        const myAlert = document.querySelector('#my-alert');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // Tampilkan tombol loading, sembunyikan tombol kirim
+            btnLoading.classList.remove('d-none');
+            btnKirim.classList.add('d-none');
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    // Tampilkan tombol kirim, sembunyikan loading
+                    btnLoading.classList.add('d-none');
+                    btnKirim.classList.remove('d-none');
+                    
+                    // Tampilkan alert sukses
+                    myAlert.classList.remove('d-none');
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    console.log('Success!', response);
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    // Tetap kembalikan tombol jika error agar user bisa coba lagi
+                    btnLoading.classList.add('d-none');
+                    btnKirim.classList.remove('d-none');
+                    alert('Terjadi kesalahan saat mengirim data. Silakan coba lagi atau hubungi WA kami.');
+                });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const waForm = document.getElementById('waForm');
+            const waInput = document.getElementById('waMessage');
+
+            waForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Mencegah halaman reload
+
+                // === KONFIGURASI NOMOR WA ===
+                // Ganti dengan nomor admin Anda (Format: 628xxxxx, tanpa + atau 0 di depan)
+                // Nomor 0274 biasanya landline, pastikan nomor ini terdaftar di WA Business
+                // Jika tidak, gunakan nomor HP admin (contoh: 628123456789)
+                const phoneNumber = '6285173270218'; 
+
+                // Ambil isi pesan dari input
+                const message = waInput.value;
+
+                // Buat URL WhatsApp
+                const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+                // Buka WhatsApp di tab baru
+                window.open(waUrl, '_blank');
+            });
+        });
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
