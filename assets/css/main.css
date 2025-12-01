@@ -597,7 +597,7 @@ p {
 }
 
 
-/*===== NAVBAR =====*/
+/*===== NAVBAR CSS =====*/
 
 .navbar-area {
     position: absolute;
@@ -623,6 +623,97 @@ p {
 
 .sticky .navbar {
     padding: 10px 0;
+}
+
+
+/* =========================================
+   RESPONSIVE NAVBAR (Max Lebar 991px)
+   Versi: Rapat & Garis Kuning Aktif
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. LOGO RESPONSIVE */
+    .navbar-brand img {
+        max-width: 140px !important;
+        height: auto;
+    }
+    /* 2. MENU COLLAPSE (Dropdown Container) */
+    .navbar-collapse {
+        background-color: #ffffff !important;
+        border-radius: 0 0 10px 10px;
+        padding: 10px 20px !important;
+        /* Padding container dikurangi */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 9999 !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+        border-top: 1px solid #eee;
+    }
+    /* 3. ITEM MENU (Jarak Rapat) */
+    .navbar-nav .nav-item {
+        margin-left: 0 !important;
+        margin-bottom: 0 !important;
+        /* Hapus jarak bawah agar mepet */
+        border-bottom: none !important;
+        /* Hapus garis abu-abu pemisah */
+    }
+    /* 4. LINK TEXT */
+    .navbar-nav .nav-item a {
+        color: #162447 !important;
+        font-size: 16px !important;
+        font-weight: 500;
+        /* Padding atas-bawah diperkecil (5px) agar rapat */
+        padding: 5px 0 !important;
+        display: inline-block;
+        /* Supaya garis kuning mengikuti panjang teks */
+        position: relative;
+        /* Jangkar untuk garis kuning */
+    }
+    /* 5. GARIS KUNING (Dikembalikan) */
+    .navbar-nav .nav-item a::before {
+        content: "";
+        display: block !important;
+        /* Munculkan kembali */
+        position: absolute;
+        height: 3px;
+        /* Ketebalan garis */
+        width: 0%;
+        /* Awalnya 0 (tersembunyi) */
+        background-color: #fdd446;
+        /* Warna Kuning */
+        bottom: 2px;
+        /* Posisi tepat di bawah teks */
+        left: 0;
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        opacity: 1 !important;
+    }
+    /* Efek saat Hover atau Aktif di Mobile */
+    .navbar-nav .nav-item a:hover::before,
+    .navbar-nav .nav-item a.active::before {
+        width: 100%;
+        /* Garis memanjang sesuai teks */
+    }
+    .navbar-nav .nav-item a:hover,
+    .navbar-nav .nav-item a.active {
+        color: #0d47a1 !important;
+        /* Warna teks jadi biru saat aktif */
+        padding-left: 0 !important;
+        /* Reset padding geser (biar diam di tempat) */
+    }
+    /* 6. HAMBURGER MENU */
+    .navbar-toggler {
+        border: none !important;
+        padding: 5px !important;
+    }
+    .navbar-toggler .toggler-icon {
+        background-color: #ffffff !important;
+    }
+    .sticky .navbar-toggler .toggler-icon {
+        background-color: #162447 !important;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px),
@@ -807,10 +898,108 @@ p {
     margin-bottom: 100px;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px),
-(max-width: 767px) {
+
+/* =========================================
+   RESPONSIVE HERO MOBILE (Fluid Design)
+   Menyesuaikan semua jenis layar HP secara otomatis
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. Layout Section */
+    .hero-section {
+        padding-top: 130px !important;
+        /* Jarak aman dari navbar */
+        padding-bottom: 60px !important;
+        text-align: center;
+        /* Semua konten rata tengah */
+        height: auto !important;
+        /* Tinggi menyesuaikan isi konten */
+    }
+    /* 2. Container Text */
     .hero-section .hero-content {
-        margin-bottom: 0px;
+        padding: 0 15px;
+        /* Memberi jarak aman kiri-kanan (Gutter) */
+        margin-bottom: 40px !important;
+        /* Jarak antara teks dan gambar */
+    }
+    /* 3. Typography (Font) yang Proporsional */
+    .hero-section .hero-content h1 {
+        /* Menggunakan 'rem' agar proporsional dengan settingan HP user */
+        font-size: 1.8rem !important;
+        /* Sekitar 28-30px */
+        line-height: 1.4 !important;
+        margin-bottom: 15px !important;
+    }
+    .hero-section .hero-content p {
+        font-size: 1rem !important;
+        /* Sekitar 16px (Standar baca) */
+        line-height: 1.6 !important;
+        margin-bottom: 30px !important;
+        padding: 0;
+        /* Reset padding aneh */
+    }
+    /* 4. Tombol (Buttons) */
+    .hero-btns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* === MODIFIKASI DI SINI === */
+        /* Angka pertama (20px) adalah jarak ATAS-BAWAH */
+        /* Angka kedua (15px) adalah jarak KIRI-KANAN */
+        gap: 20px 15px !important;
+    }
+    .hero-section .hero-content .main-btn {
+        /* Pastikan tombol dianggap sebagai blok agar bisa di-margin */
+        display: block !important;
+        /* Lebar menyesuaikan konten tapi tidak full layar */
+        width: fit-content !important;
+        min-width: 200px;
+        /* Lebar minimal biar seragam */
+        /* LOGIKA JARAK: 
+           15px = Jarak Atas & Bawah (Total jarak antar tombol jadi 30px)
+           auto = Kiri & Kanan otomatis (Supaya tombol ke tengah) 
+        */
+        margin: 15px auto !important;
+        /* Padding dalam tombol */
+        padding: 12px 30px !important;
+        font-size: 0.9rem !important;
+    }
+    /* 5. Gambar (Image) - KUNCI RESPONSIVE */
+    /* .hero-section .hero-img {
+        margin-top: 10 !important;
+        padding: 0 15px; 
+    } */
+    /* 5. GAMBAR FULL WIDTH (NABRAK CONTAINER) */
+    .hero-section .hero-img {
+        /* Trik Ajaib untuk menembus batas container */
+        width: 100vw !important;
+        /* 100% dari lebar layar (Viewport Width) */
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        margin-top: 30px !important;
+        /* Jarak dari tombol */
+        padding: 0 !important;
+        /* Hapus padding */
+        overflow: hidden;
+        /* Mencegah scroll horizontal */
+    }
+    .hero-section .hero-img img {
+        width: 100% !important;
+        /* Penuhi lebar layar */
+        height: auto !important;
+        max-width: none !important;
+        /* Hapus batasan lebar maksimal */
+        display: block;
+        border-radius: 0 !important;
+        /* Hapus sudut melengkung agar menempel sempurna */
+    }
+    /* 6. Sembunyikan elemen tidak penting */
+    .hero-section .hero-content .scroll-bottom,
+    .hero-section .hero-shape {
+        display: none !important;
     }
 }
 
@@ -942,6 +1131,88 @@ p {
 
 /*** Facts ***/
 
+
+/* 📌 Responsive untuk Mobile */
+
+
+/* =========================================
+   RESPONSIVE VISI MISI (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* Mengurangi Padding Atas */
+    .pt-120 {
+        padding-top: 60px !important;
+    }
+    /* Mengurangi Padding Bawah (Agar seimbang) */
+    .pb-120 {
+        padding-bottom: 60px !important;
+    }
+    /* Jika Anda punya class pt-60 juga, kecilkan juga biar proporsional */
+    .pt-60 {
+        padding-top: 30px !important;
+    }
+    .pb-60 {
+        padding-bottom: 30px !important;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    /* 1. MENGURANGI PADDING VERTICAL YANG SANGAT BESAR */
+    /* Dari 6rem (96px) menjadi 3rem (48px) agar tidak terlalu boros tempat */
+    .container.facts .facts-text .h-100,
+    .container.facts .facts-counter .h-100 {
+        padding: 3rem 1rem !important;
+    }
+    /* 2. MENGECILKAN ICON TARGET (BULLSEYE) */
+    .facts-text .fa-4x {
+        font-size: 3rem !important;
+        /* Kecilkan sedikit */
+        margin-bottom: 1rem !important;
+    }
+    /* 3. MENGECILKAN FONT JUDUL (Visi Kami & Misi Kami) */
+    .container.facts h1 {
+        font-size: 24px !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+        /* Rata tengah untuk mobile */
+    }
+    /* 4. MENGECILKAN FONT DESKRIPSI & LIST */
+    .container.facts p,
+    .container.facts ul li span {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+    /* 5. PENYESUAIAN LIST MISI */
+    .container.facts ul li {
+        margin-bottom: 10px !important;
+        align-items: flex-start;
+        /* Pastikan ikon dan teks sejajar atas */
+    }
+    /* Sesuaikan jarak ikon centang */
+    .container.facts ul li i {
+        font-size: 14px !important;
+        margin-top: 5px !important;
+        /* Agar pas dengan baris pertama teks */
+        margin-right: 10px !important;
+    }
+    /* 6. NONAKTIFKAN EFEK ZOOM DI HP */
+    /* Efek zoom seringkali aneh di layar sentuh */
+    .facts-text:hover,
+    .facts-counter:hover {
+        transform: none !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+        /* Kembalikan shadow normal */
+        z-index: 1 !important;
+    }
+    /* 7. MEMASTIKAN BACKGROUND IMAGE COVER AREA */
+    /* Agar background tidak terpotong aneh saat container mengecil */
+    .container.facts .facts-text,
+    .container.facts .facts-counter {
+        background-position: center !important;
+    }
+}
+
 @media (min-width: 992px) {
     .container.facts {
         max-width: 100% !important;
@@ -994,7 +1265,7 @@ p {
     /* Latar belakang biru muda dengan overlay (biru muda) */
     /* Menggunakan kode warna yang lebih terang untuk biru muda, contoh: #E0F2F7 (light cyan) atau #ADD8E6 (light blue) */
     /* Latar belakang biru muda solid 100% opacity */
-    background: linear-gradient(#bfd6f18c, #bfd6f18c), url(../img/Fact/carousel-2.jpg) center left no-repeat;
+    background: linear-gradient(#bfd6f1c7, #bfd6f1c7), url(../img/Fact/carousel-2.jpg) center left no-repeat;
     background-size: cover;
     /* Teks biru tua */
     color: #015FC9;
@@ -1066,12 +1337,78 @@ p {
 
 
 /* ====== feature css ====== */
+
 .feature-section {
-    background-image: url("../img/gallery/white-background.png");
+    background-image: url("../img/gallery/white-bg-tp.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 500px;
+}
+
+
+/* =========================================
+   RESPONSIVE FEATURES / VALUES (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. MENGECILKAN TEXT & ICON */
+    /* Container Icon (Lingkaran Biru Muda) */
+    .feature-section .single-feature .icon {
+        width: 80px !important;
+        /* Kecilkan dari 130px */
+        height: 80px !important;
+        line-height: 80px !important;
+        /* Agar vertikal center */
+        margin-bottom: 15px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    /* Gambar Icon di dalamnya */
+    .single-feature .icon img {
+        width: 40px !important;
+        /* Kecilkan dari 70px */
+        height: 40px !important;
+    }
+    .feature-section h2 {
+        /* Menggunakan 'rem' agar proporsional dengan settingan HP user */
+        font-size: 1.8rem !important;
+        /* Sekitar 28-30px */
+        line-height: 1.4 !important;
+        margin-bottom: 15px !important;
+    }
+    /* Judul Value */
+    .feature-section .single-feature .content h3 {
+        font-size: 18px !important;
+        /* Font judul lebih kecil */
+        margin-bottom: 10px !important;
+    }
+    /* Deskripsi Value */
+    .feature-section .single-feature .content p {
+        font-size: 14px !important;
+        /* Font paragraf standar mobile */
+        line-height: 1.5 !important;
+    }
+    /* 2. MEMBUAT LAYOUT SLIDER (HORIZONTAL SCROLL) */
+    .feature-section .row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 20px;
+        padding-bottom: 30px;
+        /* === PERBAIKAN DI SINI === */
+        /* 1. Paksa mulai dari kiri, abaikan justify-content-center HTML */
+        justify-content: flex-start !important;
+        /* 2. Reset margin negatif bawaan Bootstrap agar tidak terpotong di kiri */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        /* 3. Beri sedikit ruang di kiri agar item pertama tidak nempel layar */
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -1083,7 +1420,6 @@ p {
 .feature-section .single-feature {
     text-align: center;
     padding: 30px 10px;
-    
 }
 
 @media only screen and (min-width: 1400px) {
@@ -1248,28 +1584,132 @@ p {
     background-color: #032a60d6;
 }
 
-/* Mengubah warna default bg-primary (Biru Standar) menjadi Biru Tua Arsa */
-.bg-primary {
-    background-color: #032a60 !important; /* Kode Hex Biru Tua */
+
+/* =========================================
+   RESPONSIVE JADWAL (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING SECTION */
+    .jadwal-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 2. TYPOGRAPHY JUDUL (Kecilkan Font) */
+    .jadwal-section .section-title h2 {
+        font-size: 24px !important;
+        margin-bottom: 10px !important;
+    }
+    .jadwal-section .section-title p {
+        font-size: 14px !important;
+        padding: 0 15px;
+    }
+    /* 3. PERBAIKAN KARTU (CARD) */
+    .jadwal-section .card {
+        padding: 15px !important;
+        /* Kurangi padding kartu */
+        margin-bottom: 20px !important;
+        border-radius: 12px !important;
+    }
+    /* 4. PERBAIKAN HEADER PER KATEGORI */
+    .jadwal-section .card h5 {
+        font-size: 16px !important;
+        /* Judul Kategori (misal: Sertifikasi BNSP) */
+        font-weight: 700 !important;
+    }
+    .jadwal-section .card .badge {
+        font-size: 11px !important;
+        /* Badge 'Almost Running' */
+        padding: 8px 12px !important;
+        white-space: normal !important;
+        /* Biarkan teks turun baris jika kepanjangan */
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    /* 5. PERBAIKAN TABEL (Agar Rapi di HP) */
+    .jadwal-section .table th {
+        font-size: 13px !important;
+        padding: 10px !important;
+        background-color: #032a60 !important;
+        /* Pastikan header tabel biru tua */
+    }
+    .jadwal-section .table td {
+        font-size: 13px !important;
+        padding: 10px !important;
+        vertical-align: middle;
+        /* Teks di tengah vertikal */
+    }
+    /* Link Judul Program */
+    .jadwal-section .table td a {
+        font-size: 14px !important;
+        line-height: 1.4;
+        display: block;
+        margin-bottom: 0 !important;
+        /* Hapus margin agar rapat */
+    }
+    /* Tanggal (Kolom Kedua) */
+    .jadwal-section .table td:last-child {
+        width: 40%;
+        /* Beri ruang cukup untuk tanggal */
+        text-align: center;
+        white-space: nowrap;
+        /* Tanggal jangan turun baris jika memungkinkan */
+        font-size: 12px !important;
+    }
+    /* Jika tanggal terlalu panjang di layar sangat kecil, biarkan turun baris */
+    @media (max-width: 400px) {
+        .jadwal-section .table td:last-child {
+            white-space: normal;
+        }
+    }
+    /* 6. TOMBOL LIHAT SELENGKAPNYA */
+    .jadwal-section .btn-sm {
+        font-size: 12px !important;
+        padding: 8px 20px !important;
+        width: 100%;
+        /* Tombol full width di dalam kartu */
+    }
+    /* 7. TOMBOL UNDUH JADWAL (DI BAWAH) */
+    .jadwal-section .btn-download .btn {
+        width: 100% !important;
+        /* Full width agar mudah ditekan */
+        padding: 12px !important;
+        font-size: 14px !important;
+    }
 }
 
+
+/* Mengubah warna default bg-primary (Biru Standar) menjadi Biru Tua Arsa */
+
+.bg-primary {
+    background-color: #032a60 !important;
+    /* Kode Hex Biru Tua */
+}
+
+
 /* Jika Anda ingin tombol primary juga berubah */
+
 .btn-primary {
     background-color: #032a60 !important;
     border-color: #032a60 !important;
 }
 
 .btn-primary:hover {
-    background-color: #0a3678 !important; /* Biru lebih gelap untuk efek hover */
+    background-color: #0a3678 !important;
+    /* Biru lebih gelap untuk efek hover */
     border-color: #0a3678 !important;
 }
 
+
 /* Mengubah warna teks primary (misal: judul "INFO") */
+
 .text-primary {
     color: #032a60 !important;
 }
 
+
 /* Khusus untuk border tombol outline */
+
 .btn-outline-primary {
     color: #032a60 !important;
     border-color: #032a60 !important;
@@ -1304,6 +1744,7 @@ p {
     transition: .5s;
 }
 
+
 /* .jadwal-item:hover .jadwal-text {
     bottom: 0;
     opacity: 1;
@@ -1320,21 +1761,34 @@ p {
 }
 
 .jadwal-section .btn-download .btn {
-    background-color: transparent; /* Membuat latar belakang transparan */
-    border: 2px solid #ffffff;     /* Garis pinggir (border) warna putih */
-    color: #ffffff;                /* Warna teks dan ikon putih */
-    font-weight: 600;              /* Menebalkan font sedikit */
-    padding: 12px 30px;            /* Menambah ruang di dalam tombol agar lebih gagah */
-    transition: all 0.3s ease;     /* Efek transisi halus */
+    background-color: transparent;
+    /* Membuat latar belakang transparan */
+    border: 2px solid #ffffff;
+    /* Garis pinggir (border) warna putih */
+    color: #ffffff;
+    /* Warna teks dan ikon putih */
+    font-weight: 600;
+    /* Menebalkan font sedikit */
+    padding: 12px 30px;
+    /* Menambah ruang di dalam tombol agar lebih gagah */
+    transition: all 0.3s ease;
+    /* Efek transisi halus */
 }
 
+
 /* Style Hover (Saat kursor diarahkan) */
+
 .jadwal-section .btn-download .btn:hover {
-    background-color: #ffffff;     /* Latar berubah jadi putih */
-    color: #032a60;                /* Teks berubah jadi biru tua (sesuai tema) */
-    border-color: #ffffff;         /* Border tetap putih */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Efek bayangan */
-    transform: translateY(-3px);   /* Efek naik sedikit */
+    background-color: #ffffff;
+    /* Latar berubah jadi putih */
+    color: #032a60;
+    /* Teks berubah jadi biru tua (sesuai tema) */
+    border-color: #ffffff;
+    /* Border tetap putih */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* Efek bayangan */
+    transform: translateY(-3px);
+    /* Efek naik sedikit */
 }
 
 
@@ -1348,6 +1802,7 @@ p {
     transition: all 0.3s ease;
     /* z-index: 3; */
 }
+
 
 /* EFEK HOVER UNTUK SLIDE UP */
 
@@ -1464,6 +1919,129 @@ p {
     bottom: 0;
     right: 50px;
     /* 50px dari tepi KANAN LAYAR */
+}
+
+
+/* =========================================
+   RESPONSIVE BUSINESS SECTION & MODAL (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. SECTION PADDING */
+    .Business-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 1. Mengurangi Jarak Bawah Judul */
+    /* Mengubah mb-60 (60px) menjadi 30px agar konten di bawahnya tidak kejauhan */
+    .section-title.mb-60 {
+        margin-bottom: 30px !important;
+    }
+    /* 2. Mengecilkan Font Judul (H2) */
+    .section-title h2 {
+        font-size: 24px !important;
+        /* Ukuran pas untuk HP */
+        line-height: 1.4 !important;
+        margin-bottom: 10px !important;
+        /* Kurangi jarak ke paragraf */
+    }
+    /* 3. Mengecilkan Font Deskripsi (P) */
+    .section-title p {
+        font-size: 14px !important;
+        /* Standar baca mobile */
+        line-height: 1.6 !important;
+        padding: 0 15px !important;
+        /* Memberi jarak aman kiri-kanan agar tidak mepet layar */
+    }
+    /* 2. CARD SERVICE ITEM */
+    .service-item {
+        padding: 30px 20px !important;
+        /* Kurangi padding kartu */
+        height: auto !important;
+        /* Tinggi menyesuaikan isi */
+    }
+    /* Header Kartu (Judul & Label) */
+    .service-item h4 {
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+    }
+    .service-item p {
+        font-size: 13px !important;
+        /* Ukuran font lebih kecil (Default biasanya 16px) */
+        line-height: 1.5 !important;
+        /* Jarak antar baris agar tetap terbaca */
+        margin-bottom: 15px !important;
+        /* Sesuaikan jarak bawah */
+        color: #666;
+        /* Opsional: warna abu-abu agar tidak terlalu keras */
+    }
+    /* Label Biru (KEMNAKER RI, dll) */
+    .service-item .label-biru {
+        display: block !important;
+        /* Turun ke baris baru */
+        width: fit-content;
+        margin: 5px 0 15px 0 !important;
+        /* Reset margin */
+        font-size: 12px !important;
+    }
+    /* List Poin */
+    .service-item ul li {
+        font-size: 14px !important;
+        line-height: 1.5;
+        margin-bottom: 8px !important;
+    }
+    /* Tombol Selengkapnya */
+    .service-item a.btn {
+        width: 100%;
+        /* Tombol full width */
+        margin-top: 10px;
+    }
+    /* 3. MODAL POP-UP (RESPONSIF) */
+    .modal-dialog {
+        margin: 10px !important;
+        /* Margin tipis dari tepi layar HP */
+        width: auto !important;
+    }
+    .modal-content {
+        border-radius: 10px !important;
+    }
+    .modal-header {
+        padding: 15px !important;
+        flex-direction: column;
+        /* Judul dan tombol X susun vertikal jika sempit */
+        align-items: flex-start;
+    }
+    .modal-title {
+        font-size: 18px !important;
+        line-height: 1.4;
+    }
+    /* Posisikan label putih di bawah judul */
+    .modal-header .label-putih {
+        margin: 5px 0 0 0 !important;
+        font-size: 12px !important;
+    }
+    /* Tombol X tetap di pojok kanan atas */
+    .modal-header .btn-close {
+        top: 15px !important;
+        right: 15px !important;
+    }
+    .modal-body {
+        padding: 20px 15px !important;
+        max-height: 70vh;
+        /* Batasi tinggi agar bisa discroll */
+        overflow-y: auto;
+        /* Scroll vertikal */
+    }
+    /* Judul Kategori dalam Modal (h6) */
+    .modal-body h6 {
+        font-size: 14px !important;
+        margin-top: 20px !important;
+    }
+    /* List Item dalam Modal */
+    .modal-body ul li {
+        font-size: 13px !important;
+        margin-bottom: 8px !important;
+    }
 }
 
 
@@ -1609,20 +2187,103 @@ p {
     /* Warna biru primary (atau ganti sesuai tema Anda) */
 }
 
+
 /* FORM DAFTAR */
+
+
 /* Styling untuk Form Pendaftaran */
+
 .registration-section {
-    background-color: #f0f6ff; /* Senada dengan testimonial */
+    background-color: #f0f6ff;
+    /* Senada dengan testimonial */
 }
 
 .registration-section .form-control:focus,
 .registration-section .form-select:focus {
-    border-color: #0d47a1; /* Warna biru tua saat diklik */
+    border-color: #0d47a1;
+    /* Warna biru tua saat diklik */
     box-shadow: 0 0 0 0.25rem rgba(13, 71, 161, 0.25);
 }
 
 .registration-section .card {
     border-radius: 15px;
+}
+
+
+/* =========================================
+   RESPONSIVE FORM PENDAFTARAN (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING SECTION */
+    .registration-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 2. TYPOGRAPHY (JUDUL & DESKRIPSI) */
+    .registration-section h2 {
+        /* "Daftar Sekarang" */
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+    }
+    .registration-section h1 {
+        /* "Siap Meningkatkan..." */
+        font-size: 24px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 15px !important;
+    }
+    .registration-section .section-title p {
+        font-size: 14px !important;
+        line-height: 1.6;
+        margin-bottom: 30px !important;
+    }
+    /* 3. CONTACT INFO (WA & EMAIL) */
+    .contact-info {
+        margin-top: 30px !important;
+        margin-bottom: 40px !important;
+        padding: 10px;
+    }
+    .contact-info .icon-box {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .contact-info .icon-box i {
+        font-size: 18px !important;
+        /* Kecilkan ikon */
+    }
+    .contact-info h5 {
+        font-size: 16px !important;
+    }
+    .contact-info p {
+        font-size: 14px !important;
+    }
+    /* 4. FORM CARD (KOTAK FORMULIR) */
+    .registration-section .card {
+        padding: 25px 20px !important;
+        /* Kurangi padding dalam kartu */
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08) !important;
+        border-radius: 15px !important;
+    }
+    /* 5. FORM INPUTS */
+    .registration-section .form-floating>.form-control,
+    .registration-section .form-floating>.form-select {
+        height: 50px !important;
+        /* Tinggi input standar mobile */
+        min-height: 50px !important;
+        font-size: 14px !important;
+    }
+    .registration-section .form-floating>label {
+        padding: 12px 12px !important;
+        font-size: 13px !important;
+        /* Label lebih kecil */
+    }
+    /* Tombol Kirim */
+    .registration-section .btn-kirim,
+    .registration-section .btn-loading {
+        padding: 12px !important;
+        font-size: 16px !important;
+        margin-top: 10px !important;
+    }
 }
 
 
@@ -1766,6 +2427,79 @@ p {
 }
 
 
+/* =========================================
+   RESPONSIVE LEGALITAS (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING SECTION */
+    .legality-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 2. LIST LEGALITAS (KIRI) */
+    .legality-list li {
+        padding: 12px !important;
+        /* Kurangi padding kartu list */
+        margin-bottom: 15px !important;
+        align-items: flex-start;
+        /* Pastikan ikon sejajar atas */
+    }
+    .legality-list .icon {
+        font-size: 20px !important;
+        /* Kecilkan ikon centang */
+        margin-right: 12px !important;
+        margin-top: 2px !important;
+        /* Sesuaikan posisi vertikal */
+    }
+    .legality-list .item-title {
+        font-size: 14px !important;
+        /* Judul item lebih kecil */
+        margin-bottom: 3px !important;
+        line-height: 1.4;
+    }
+    .legality-list .item-detail {
+        font-size: 12px !important;
+        /* Detail nomor SK lebih kecil */
+        color: #666;
+        word-break: break-word;
+        /* Pastikan nomor panjang turun ke bawah */
+    }
+    /* 6. TOMBOL LIHAT SELENGKAPNYA */
+    .btn-sm {
+        font-size: 12px !important;
+        padding: 8px 20px !important;
+        width: 100%;
+        /* Tombol full width di dalam kartu */
+    }
+    /* 3. QR CODE BOX (KANAN/BAWAH) */
+    .qr-code-box {
+        flex-direction: column;
+        /* Ubah jadi susunan vertikal (atas-bawah) */
+        text-align: center;
+        /* Rata tengah */
+        padding: 20px !important;
+        gap: 15px !important;
+        margin-top: 30px !important;
+        /* Beri jarak dari list di atasnya */
+    }
+    .qr-code-box a img {
+        width: 100px !important;
+        /* Kecilkan sedikit QR code */
+        height: 100px !important;
+        margin: 0 auto;
+        /* Tengah horizontal */
+    }
+    .qr-code-box .qr-link-text p {
+        font-size: 16px !important;
+        margin-bottom: 5px !important;
+    }
+    .qr-code-box .qr-subtext {
+        font-size: 12px !important;
+    }
+}
+
+
 /* ===== location css ====== */
 
 
@@ -1845,6 +2579,63 @@ p {
 }
 
 
+/* =========================================
+   RESPONSIVE LOKASI (Slider Mode)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING SECTION */
+    .location-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 2. LAYOUT SLIDER (Horizontal Scroll) */
+    .location-section .location-slider {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px;
+        padding-bottom: 20px;
+        /* Reset posisi start */
+        justify-content: flex-start !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    /* Sembunyikan Scrollbar */
+    .location-section .location-slider::-webkit-scrollbar {
+        display: none;
+    }
+    /* 3. ATUR UKURAN KARTU LOKASI */
+    .location-section .col-lg-3 {
+        flex: 0 0 75% !important;
+        /* Lebar kartu 75% layar */
+        max-width: 75% !important;
+        scroll-snap-align: center;
+    }
+    /* 4. PERBAIKAN KARTU */
+    .location-card img {
+        height: 200px !important;
+        /* Kurangi tinggi gambar di HP */
+    }
+    /* Tampilkan info lokasi selalu (tanpa hover) di HP */
+    .location-card .location-info {
+        transform: translateY(0) !important;
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%) !important;
+    }
+    .location-card p {
+        opacity: 1 !important;
+        font-size: 12px !important;
+    }
+    .location-card h5 {
+        font-size: 16px !important;
+    }
+}
+
+
 /* ===== Project css ===== */
 
 
@@ -1901,13 +2692,12 @@ p {
 /* Latar belakang section */
 
 .gallery-section {
-    background-image: url("../img/gallery/white-background.png");
+    background-image: url("../img/gallery/white-bg-tp.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 500px;
 }
-
 
 
 /* Kartu galeri */
@@ -1980,6 +2770,76 @@ p {
 .gallery-card:hover .gallery-image {
     transform: scale(1.03);
     /* Zoom gambar sedikit */
+}
+
+
+/* =========================================
+   RESPONSIVE GALERI (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING SECTION */
+    .gallery-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 2. LAYOUT GRID (2 Kolom di HP) */
+    /* Mengubah row agar bisa menampung 2 item per baris */
+    .gallery-section .row.g-4 {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px !important;
+        /* Jarak antar kartu lebih rapat */
+        justify-content: space-between;
+        /* Ratakan kiri kanan */
+    }
+    .gallery-section .col-lg-4 {
+        /* Lebar kartu: Sekitar 48% (setengah layar minus gap) */
+        width: 48% !important;
+        flex: 0 0 48% !important;
+        max-width: 48% !important;
+        margin: 0 !important;
+        /* Reset margin */
+    }
+    /* 3. PERBAIKAN KARTU GALERI (Kecilkan agar muat) */
+    .gallery-card {
+        border-radius: 8px !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    }
+    .gallery-card .gallery-image {
+        height: 120px !important;
+        /* Kurangi tinggi gambar */
+    }
+    .gallery-card .gallery-content {
+        padding: 12px !important;
+        /* Kurangi padding dalam */
+    }
+    /* 4. TYPOGRAPHY (Kecilkan Font) */
+    .gallery-card .gallery-tag {
+        font-size: 9px !important;
+        padding: 3px 6px !important;
+        margin-bottom: 5px !important;
+        border-radius: 4px !important;
+    }
+    .gallery-card .gallery-title {
+        font-size: 13px !important;
+        font-weight: 700;
+        margin-bottom: 5px !important;
+        /* Batasi judul maks 2 baris agar tinggi kartu seragam */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .gallery-card .gallery-date {
+        font-size: 10px !important;
+        /* Tanggal kecil */
+    }
+    .gallery-card .gallery-date i {
+        font-size: 10px !important;
+        margin-right: 3px !important;
+    }
 }
 
 
@@ -2063,12 +2923,52 @@ p {
     }
 }
 
+
+/* =========================================
+   RESPONSIVE KLIEN (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING SECTION */
+    .client-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 2. TYPOGRAPHY JUDUL */
+    .client-section .section-title h2 {
+        font-size: 24px !important;
+        margin-bottom: 10px !important;
+    }
+    .client-section .section-title p {
+        font-size: 14px !important;
+        line-height: 1.6;
+        padding: 0 15px;
+    }
+    /* 3. LOGO SCROLLER (Lebih Cepat & Kecil) */
+    /* Ubah durasi animasi agar lebih cepat di layar kecil (karena track lebih pendek) */
+    .clients-track {
+        animation: scroll 20s linear infinite !important;
+        /* Dipercepat dari 40s ke 20s */
+    }
+    .clients-track img {
+        height: 50px !important;
+        /* Kecilkan logo dari 80px ke 50px */
+        margin: 0 15px !important;
+        /* Rapatkan jarak antar logo */
+        /* Opsional: Hilangkan grayscale di mobile agar langsung berwarna */
+        /* filter: grayscale(0%) !important; */
+        /* opacity: 1 !important; */
+    }
+}
+
+
 /*
  * Styling untuk Section Testimoni
  */
 
 .testimonial-section {
-    background-color: #f0f6ff; /* Biru sangat muda (hampir putih) untuk membedakan dengan section sebelumnya */
+    background-color: #f0f6ff;
+    /* Biru sangat muda (hampir putih) untuk membedakan dengan section sebelumnya */
 }
 
 .testimonial-card {
@@ -2079,19 +2979,23 @@ p {
     position: relative;
     transition: all 0.3s ease;
     height: 100%;
-    border-left: 5px solid #0d47a1; /* Aksen Biru Tua di kiri */
+    border-left: 5px solid #0d47a1;
+    /* Aksen Biru Tua di kiri */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+
 /* Ikon Kutipan Besar di Background */
+
 .testimonial-card .quote-icon {
     position: absolute;
     top: 10px;
     right: 20px;
     font-size: 60px;
-    color: rgba(13, 71, 161, 0.1); /* Biru tua transparan */
+    color: rgba(13, 71, 161, 0.1);
+    /* Biru tua transparan */
 }
 
 .testimonial-card .review-text {
@@ -2103,7 +3007,9 @@ p {
     z-index: 1;
 }
 
+
 /* Styling Footer Kartu (Profil User) */
+
 .testimonial-card .card-footer {
     background: transparent;
     border-top: 1px solid #eee;
@@ -2116,7 +3022,8 @@ p {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #0d47a1; /* Border foto biru tua */
+    border: 2px solid #0d47a1;
+    /* Border foto biru tua */
 }
 
 .testimonial-card .user-info h5 {
@@ -2131,7 +3038,84 @@ p {
     font-size: 0.85rem;
 }
 
+
+/* =========================================
+   RESPONSIVE TESTIMONI (Slider Mode)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING SECTION */
+    .testimonial-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 2. LAYOUT SLIDER (Horizontal Scroll) */
+    .testimonial-section .testimonial-slider {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 15px;
+        padding-bottom: 30px;
+        /* Ruang lebih untuk shadow */
+        /* Reset posisi start */
+        justify-content: flex-start !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    .testimonial-section .testimonial-slider::-webkit-scrollbar {
+        display: none;
+    }
+    /* 3. ATUR UKURAN KARTU TESTIMONI */
+    .testimonial-section .col-lg-4 {
+        flex: 0 0 85% !important;
+        /* Lebar kartu 85% layar (agar teks terbaca jelas) */
+        max-width: 85% !important;
+        scroll-snap-align: center;
+        margin: 0 !important;
+    }
+    /* 4. PERBAIKAN KARTU */
+    .testimonial-card {
+        padding: 20px !important;
+        /* Kurangi padding dalam */
+        height: 100% !important;
+        /* Tinggi sama rata */
+        margin-bottom: 0 !important;
+    }
+    .testimonial-card .review-text {
+        font-size: 14px !important;
+        /* Font ulasan lebih kecil */
+        line-height: 1.6;
+        margin-bottom: 15px !important;
+    }
+    /* Posisikan ikon kutipan agar tidak nabrak */
+    .testimonial-card .quote-icon {
+        font-size: 40px !important;
+        top: 10px !important;
+        right: 10px !important;
+    }
+    /* Footer User Info */
+    .testimonial-card .card-footer {
+        padding-top: 15px !important;
+    }
+    .testimonial-card .user-img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .testimonial-card .user-info h5 {
+        font-size: 14px !important;
+    }
+    .testimonial-card .user-info small {
+        font-size: 11px !important;
+    }
+}
+
+
 /* Efek Hover */
+
 .testimonial-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
@@ -2147,15 +3131,101 @@ p {
 
 .hidden-content {
     /* Menyembunyikan elemen */
-    display: none; 
-    
+    display: none;
     /* Opsional: Tambahkan transisi jika Anda ingin animasi saat muncul */
-    /* transition: all 0.5s ease-in-out; */ 
+    /* transition: all 0.5s ease-in-out; */
 }
 
 .visible-content {
     /* Kelas ini akan ditambahkan oleh JavaScript */
-    display: block; 
+    display: block;
+}
+
+
+/* =========================================
+   RESPONSIVE ABOUT SECTION (FIXED - FORCE SHOW IMAGE)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING SECTION */
+    .about-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 2. PAKSA CONTAINER GAMBAR MUNCUL */
+    .about-section .about-img,
+    .about-section .about-img-2 {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 200px;
+        /* Memberi ruang minimal agar tidak gepeng */
+        margin-bottom: 30px !important;
+        position: relative !important;
+        /* Penting agar z-index bekerja */
+        z-index: 1 !important;
+        text-align: center;
+        padding: 0 !important;
+        overflow: visible !important;
+        /* Jangan sembunyikan apapun yang keluar */
+    }
+    /* 3. PAKSA GAMBARNYA SENDIRI MUNCUL & RESET POSISI */
+    .about-section .about-img img,
+    .about-section .about-img-2 img {
+        display: block !important;
+        position: static !important;
+        /* Matikan posisi aneh-aneh bawaan template */
+        width: 100% !important;
+        max-width: 450px !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        /* Rata tengah */
+        opacity: 1 !important;
+        /* Pastikan tidak transparan */
+        visibility: visible !important;
+        /* Pastikan visible */
+    }
+    /* 4. HANYA SEMBUNYIKAN HIASAN (DOTS/SHAPE) */
+    /* Target spesifik ke elemen background shape */
+    .about-section .about-img .shape,
+    .about-section .about-img-2 .shape {
+        display: none !important;
+    }
+    /* 5. PERBAIKAN TEKS */
+    .about-section .about-content {
+        text-align: center;
+        padding: 0 15px;
+    }
+    .about-section .section-title h2 {
+        font-size: 24px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 15px !important;
+    }
+    .about-section .about-content p {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 20px !important;
+    }
+    /* List Poin */
+    .about-section .about-content ul li {
+        font-size: 15px !important;
+        padding-left: 30px !important;
+        margin-bottom: 15px !important;
+        text-align: left;
+        display: inline-block;
+    }
+    .about-section .about-content ul li::before {
+        width: 14px !important;
+        height: 14px !important;
+        top: 4px !important;
+    }
+    /* Tombol */
+    .about-section .about-content .main-btn {
+        width: auto !important;
+        padding: 10px 25px !important;
+        font-size: 14px !important;
+        margin-top: 10px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -2317,23 +3387,105 @@ p {
     padding: 30px;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .feature-extended-section .single-feature-extended {
-        padding: 30px 10px;
-    }
-}
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+/* =========================================
+   RESPONSIVE FASILITAS (Max Lebar 991px)
+   Layout: List Vertikal (Icon Kiri - Teks Kanan)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. Container & Jarak */
+    .feature-extended-section {
+        padding-top: 60px !important;
+        padding-bottom: 40px !important;
+    }
+    .feature-extended-section p {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 20px !important;
+    }
+    .feature-extended-section .row {
+        gap: 15px;
+        /* Jarak antar item */
+    }
+    /* 2. Mengubah Kartu Menjadi Layout Flex Row (Kiri-Kanan) */
     .feature-extended-section .single-feature-extended {
-        padding: 30px 0px;
+        display: flex !important;
+        align-items: flex-start;
+        /* Ikon sejajar dengan judul */
+        text-align: left !important;
+        /* Rata kiri */
+        border-radius: 10px;
+        background: #ffffff;
+        padding: 20px !important;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        margin-bottom: 0 !important;
+    }
+    /* 3. Styling Ikon (Di Sebelah Kiri) */
+    .feature-extended-section .single-feature-extended .icon {
+        /* Lingkaran */
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        background: #032a60;
+        /* Biru tua */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0 !important;
+        margin-right: 20px !important;
+    }
+    /* Styling khusus untuk img di dalam .icon */
+    .feature-extended-section .single-feature-extended .icon img {
+        width: 30px;
+        /* Sesuaikan ukuran ikon */
+        height: 30px;
+        /* Sesuaikan */
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+        /* Biar warnanya jadi putih */
+    }
+    /* 4. Styling Konten Teks */
+    .feature-extended-section .single-feature-extended .content {
+        flex: 1;
+    }
+    .feature-extended-section .single-feature-extended .content h3 {
+        font-size: 18px !important;
+        margin-bottom: 8px !important;
+        font-weight: 700;
+        color: #032a60 !important;
+        /* Judul juga Biru Tua agar serasi */
+    }
+    .feature-extended-section .single-feature-extended .content p {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 0 !important;
+        color: #666;
+    }
+    .accordion-button img {
+        width: 30px;
+        height: auto;
+        object-fit: contain;
     }
 }
 
 .feature-extended-section .single-feature-extended .icon {
-    font-size: 65px;
-    line-height: 1;
     margin-bottom: 30px;
-    color: #032a60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Kalau di dalamnya ada IMG */
+
+.feature-extended-section .single-feature-extended .icon img {
+    width: 65px;
+    /* ganti font-size → ukuran gambar */
+    height: 65px;
+    object-fit: contain;
 }
 
 .feature-extended-section .single-feature-extended .content h3 {
@@ -2348,7 +3500,6 @@ p {
 
 
 /* ======= subscribe css ======= */
-
 
 @media (max-width: 767px) {
     .subscribe-section .section-title h2 {
@@ -2432,6 +3583,95 @@ p {
     font-weight: 700;
     font-size: 18px;
     border-radius: 18px;
+}
+
+
+/* =========================================
+   RESPONSIVE CONTACT SECTION (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING SECTION */
+    .subscribe-section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    /* 2. WRAPPER KONTAK (BACKGROUND BIRU) */
+    .subscribe-section .subscribe-wrapper {
+        padding: 30px 20px !important;
+        border-radius: 15px !important;
+        /* === UBAH DI SINI: RATA KIRI === */
+        text-align: left !important;
+    }
+    /* Judul & Deskripsi */
+    .subscribe-section .section-title h2 {
+        font-size: 24px !important;
+        margin-bottom: 10px !important;
+    }
+    .subscribe-section .section-title p {
+        font-size: 14px !important;
+        line-height: 1.6;
+        margin-bottom: 20px !important;
+        padding: 0 !important;
+        /* Hapus padding agar mepet kiri */
+    }
+    /* 3. LIST KONTAK (No Telp, Email, Web) */
+    .contact-details {
+        margin-top: 20px !important;
+        margin-bottom: 30px !important;
+    }
+    .contact-details p {
+        font-size: 14px !important;
+        margin-bottom: 10px !important;
+        display: flex;
+        align-items: center;
+        /* === UBAH DI SINI: Ikon & Teks Rata Kiri === */
+        justify-content: flex-start !important;
+    }
+    .contact-details i {
+        margin-right: 15px !important;
+        /* Tambah jarak dikit biar rapi */
+        min-width: 20px;
+        /* Agar teks lurus meski ikon beda lebar */
+        text-align: center;
+    }
+    /* 4. FORM WHATSAPP */
+    .subscribe-section .subscribe-wrapper .subscribe-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px !important;
+    }
+    .subscribe-section .subscribe-wrapper .subscribe-form input {
+        width: 100% !important;
+        padding: 15px 20px !important;
+        padding-right: 20px !important;
+        font-size: 14px !important;
+        border-radius: 10px !important;
+        height: 50px !important;
+    }
+    .subscribe-section .subscribe-wrapper .subscribe-form button {
+        position: static !important;
+        width: 100% !important;
+        padding: 12px !important;
+        font-size: 16px !important;
+        border-radius: 10px !important;
+        margin-top: 0 !important;
+        background: #ffffff !important;
+        color: #032a60 !important;
+        font-weight: 700;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    /* 5. GOOGLE MAPS */
+    .subscribe-section .map {
+        margin-top: 20px !important;
+        padding: 0 !important;
+    }
+    .subscribe-section .map iframe {
+        width: 100% !important;
+        height: 300px !important;
+        border-radius: 10px !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -2542,16 +3782,98 @@ p {
     padding-left: 8px;
 }
 
+
 /* 1. Atur Properti Dasar pada Tautan (agar padding berfungsi) */
+
 .footer .map p {
-    display: inline-block; /* PENTING: Mengizinkan padding dan transisi */
-    transition: padding-left 0.3s ease, color 0.3s ease; /* Membuat efek pergeseran halus */
+    display: inline-block;
+    /* PENTING: Mengizinkan padding dan transisi */
+    transition: padding-left 0.3s ease, color 0.3s ease;
+    /* Membuat efek pergeseran halus */
 }
 
+
 /* 2. Atur Efek Saat Hover */
+
 .footer .map p:hover {
-    color: #ffffff; /* Pastikan warnanya tetap putih (atau ganti ke warna lain jika Anda mau) */
-    padding-left: 8px; /* Efek Pergeseran ke kanan */
+    color: #ffffff;
+    /* Pastikan warnanya tetap putih (atau ganti ke warna lain jika Anda mau) */
+    padding-left: 8px;
+    /* Efek Pergeseran ke kanan */
+}
+
+
+/* =========================================
+   RESPONSIVE FOOTER (Max Lebar 991px)
+   ========================================= */
+
+@media only screen and (max-width: 991px) {
+    /* 1. ATUR PADDING & BACKGROUND */
+    .footer {
+        padding-top: 60px !important;
+        /* Kurangi drastis agar tidak terlalu jauh */
+        padding-bottom: 30px !important;
+        margin-top: 0 !important;
+        /* Reset margin atas */
+        background: #032a60 !important;
+        /* Pastikan background biru tua */
+        text-align: center;
+        /* Rata tengah semua isi footer di HP */
+    }
+    /* 2. LOGO & DESKRIPSI */
+    .footer .logo img {
+        max-width: 150px !important;
+        /* Ukuran logo di HP */
+        margin: 0 auto;
+        /* Tengah */
+    }
+    .footer .desc {
+        font-size: 14px !important;
+        line-height: 1.6;
+        padding: 0 10px !important;
+        margin-bottom: 25px !important;
+    }
+    /* 3. SOCIAL MEDIA ICON */
+    .footer .widget-wrapper .footer-widget .socials {
+        justify-content: center !important;
+        /* Ikon sosmed di tengah */
+        margin-bottom: 30px !important;
+    }
+    /* Reset efek hover geser di mobile (karena tidak ada mouse) */
+    .footer .widget-wrapper .footer-widget ul.links li a:hover {
+        padding-left: 0 !important;
+    }
+    /* 6. ALAMAT (MAP TEXT) */
+    .footer .map {
+        margin-top: 30px !important;
+        padding-top: 20px !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        /* Garis pemisah halus */
+    }
+    .footer .map p {
+        font-size: 13px !important;
+        display: block !important;
+        /* Pastikan blok agar rata tengah */
+    }
+    /* Revisi Title Widget agar tidak terlalu besar saat sejajar */
+    .footer .widget-wrapper .footer-widget h3 {
+        font-size: 16px !important;
+        /* Kecilkan judul widget */
+        margin-bottom: 15px !important;
+        margin-top: 10px !important;
+    }
+    /* Revisi Link agar muat */
+    .footer .widget-wrapper .footer-widget ul.links li {
+        font-size: 13px !important;
+        /* Kecilkan font link */
+        line-height: 2 !important;
+        white-space: nowrap;
+        /* Mencegah teks turun baris sembarangan */
+    }
+    /* Pastikan widget "Other" punya jarak di atasnya */
+    .footer .col-12 .footer-widget {
+        margin-top: 20px;
+    }
 }
 
 .mt-5 {
@@ -3274,46 +4596,64 @@ p {
     padding-bottom: 225px;
 }
 
+
 /* * Floating WhatsApp Button Styling 
  */
+
 .float-wa {
-    position: fixed; /* Tetap di tempat saat di-scroll */
+    position: fixed;
+    /* Tetap di tempat saat di-scroll */
     width: 60px;
     height: 60px;
-    bottom: 100px; /* Jarak dari bawah */
-    right: 30px;  /* Jarak dari kanan */
-    background-color: #25d366; /* Warna hijau resmi WhatsApp */
+    bottom: 100px;
+    /* Jarak dari bawah */
+    right: 30px;
+    /* Jarak dari kanan */
+    background-color: #25d366;
+    /* Warna hijau resmi WhatsApp */
     color: #FFF;
-    border-radius: 50%; /* Membuatnya bulat sempurna */
+    border-radius: 50%;
+    /* Membuatnya bulat sempurna */
     text-align: center;
-    font-size: 30px; /* Ukuran ikon */
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2); /* Bayangan */
-    z-index: 1000; /* Pastikan selalu di atas elemen lain */
-    
+    font-size: 30px;
+    /* Ukuran ikon */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    /* Bayangan */
+    z-index: 1000;
+    /* Pastikan selalu di atas elemen lain */
     /* Flexbox untuk menengahkan ikon */
     display: flex;
     align-items: center;
     justify-content: center;
-    
     /* Transisi halus */
     transition: all 0.3s ease;
 }
 
+
 /* Efek Hover */
+
 .float-wa:hover {
-    background-color: #128C7E; /* Warna hijau WA yang lebih gelap */
+    background-color: #128C7E;
+    /* Warna hijau WA yang lebih gelap */
     color: #ffffff;
-    transform: scale(1.1); /* Sedikit membesar saat di-hover */
-    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+    transform: scale(1.1);
+    /* Sedikit membesar saat di-hover */
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
 }
 
+
 /* Responsif untuk layar HP (tombol sedikit lebih kecil) */
+
 @media (max-width: 768px) {
     .float-wa {
         width: 50px;
         height: 50px;
-        bottom: 20px;
-        right: 20px;
+        bottom: 90px;
+        right: 30px;
         font-size: 24px;
     }
+}
+
+.text-primary {
+    color: #032a60 !important;
 }
