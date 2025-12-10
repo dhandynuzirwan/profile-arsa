@@ -1129,7 +1129,7 @@ p {
 }
 
 
-/*** Facts ***/
+/*** vision-mission ***/
 
 
 /* 📌 Responsive untuk Mobile */
@@ -1160,37 +1160,37 @@ p {
 @media only screen and (max-width: 991px) {
     /* 1. MENGURANGI PADDING VERTICAL YANG SANGAT BESAR */
     /* Dari 6rem (96px) menjadi 3rem (48px) agar tidak terlalu boros tempat */
-    .container.facts .facts-text .h-100,
-    .container.facts .facts-counter .h-100 {
+    .container.vision-mission .vision-mission-text .h-100,
+    .container.vision-mission .vision-mission-counter .h-100 {
         padding: 3rem 1rem !important;
     }
     /* 2. MENGECILKAN ICON TARGET (BULLSEYE) */
-    .facts-text .fa-4x {
+    .vision-mission-text .fa-4x {
         font-size: 3rem !important;
         /* Kecilkan sedikit */
         margin-bottom: 1rem !important;
     }
     /* 3. MENGECILKAN FONT JUDUL (Visi Kami & Misi Kami) */
-    .container.facts h1 {
+    .container.vision-mission h1 {
         font-size: 24px !important;
         margin-bottom: 1rem !important;
         text-align: center !important;
         /* Rata tengah untuk mobile */
     }
     /* 4. MENGECILKAN FONT DESKRIPSI & LIST */
-    .container.facts p,
-    .container.facts ul li span {
+    .container.vision-mission p,
+    .container.vision-mission ul li span {
         font-size: 14px !important;
         line-height: 1.6 !important;
     }
     /* 5. PENYESUAIAN LIST MISI */
-    .container.facts ul li {
+    .container.vision-mission ul li {
         margin-bottom: 10px !important;
         align-items: flex-start;
         /* Pastikan ikon dan teks sejajar atas */
     }
     /* Sesuaikan jarak ikon centang */
-    .container.facts ul li i {
+    .container.vision-mission ul li i {
         font-size: 14px !important;
         margin-top: 5px !important;
         /* Agar pas dengan baris pertama teks */
@@ -1198,8 +1198,8 @@ p {
     }
     /* 6. NONAKTIFKAN EFEK ZOOM DI HP */
     /* Efek zoom seringkali aneh di layar sentuh */
-    .facts-text:hover,
-    .facts-counter:hover {
+    .vision-mission-text:hover,
+    .vision-mission-counter:hover {
         transform: none !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
         /* Kembalikan shadow normal */
@@ -1207,38 +1207,38 @@ p {
     }
     /* 7. MEMASTIKAN BACKGROUND IMAGE COVER AREA */
     /* Agar background tidak terpotong aneh saat container mengecil */
-    .container.facts .facts-text,
-    .container.facts .facts-counter {
+    .container.vision-mission .vision-mission-text,
+    .container.vision-mission .vision-mission-counter {
         background-position: center !important;
     }
 }
 
 @media (min-width: 992px) {
-    .container.facts {
+    .container.vision-mission {
         max-width: 100% !important;
     }
-    .container.facts .facts-text {
+    .container.vision-mission .vision-mission-text {
         padding-left: calc(((100% - 960px) / 2) + .75rem);
     }
-    .container.facts .facts-counter {
+    .container.vision-mission .vision-mission-counter {
         padding-right: calc(((100% - 960px) / 2) + .75rem);
     }
 }
 
 @media (min-width: 1200px) {
-    .container.facts .facts-text {
+    .container.vision-mission .vision-mission-text {
         padding-left: calc(((100% - 1140px) / 2) + .75rem);
     }
-    .container.facts .facts-counter {
+    .container.vision-mission .vision-mission-counter {
         padding-right: calc(((100% - 1140px) / 2) + .75rem);
     }
 }
 
 @media (min-width: 1400px) {
-    .container.facts .facts-text {
+    .container.vision-mission .vision-mission-text {
         padding-left: calc(((100% - 1320px) / 2) + .75rem);
     }
-    .container.facts .facts-counter {
+    .container.vision-mission .vision-mission-counter {
         padding-right: calc(((100% - 1320px) / 2) + .75rem);
     }
 }
@@ -1246,65 +1246,65 @@ p {
 
 /* MODIFIKASI DIMULAI DI SINI */
 
-.container.facts .facts-text {
+.container.vision-mission .vision-mission-text {
     /* Latar belakang biru tua dengan overlay (biru yang sama) */
-    background: linear-gradient(#032a60c6, #032a60d2), url(../img/Fact/carousel-1.jpg) center right no-repeat;
+    background: linear-gradient(#032a60c6, #032a60d2), url(../img/vision-mission/carousel-1.jpg) center right no-repeat;
     background-size: cover;
     /* Teks putih */
     color: #FFFFFF;
     /* Menambahkan warna teks putih untuk kolom Visi */
 }
 
-.container.facts .facts-text h1,
-.container.facts .facts-text p {
+.container.vision-mission .vision-mission-text h1,
+.container.vision-mission .vision-mission-text p {
     color: #FFFFFF !important;
     /* Memastikan h1 dan p di kolom Visi berwarna putih */
 }
 
-.container.facts .facts-counter {
+.container.vision-mission .vision-mission-counter {
     /* Latar belakang biru muda dengan overlay (biru muda) */
     /* Menggunakan kode warna yang lebih terang untuk biru muda, contoh: #E0F2F7 (light cyan) atau #ADD8E6 (light blue) */
     /* Latar belakang biru muda solid 100% opacity */
-    background: linear-gradient(#bfd6f1c7, #bfd6f1c7), url(../img/Fact/carousel-2.jpg) center left no-repeat;
+    background: linear-gradient(#f0f6ffd6, #f0f6ffd6), url(../img/vision-mission/carousel-2.jpg) center left no-repeat;
     background-size: cover;
     /* Teks biru tua */
-    color: #015FC9;
+    color: #032a60;
     /* Menambahkan warna teks biru tua untuk kolom Misi */
 }
 
-.container.facts .facts-counter h1,
-.container.facts .facts-counter ul,
-.container.facts .facts-counter li,
-.container.facts .facts-counter span {
+.container.vision-mission .vision-mission-counter h1,
+.container.vision-mission .vision-mission-counter ul,
+.container.vision-mission .vision-mission-counter li,
+.container.vision-mission .vision-mission-counter span {
     color: #032a60 !important;
     /* Memastikan h1, ul, li, span di kolom Misi berwarna biru tua */
 }
 
 
-/* Jika ada ikon di dalam .facts-counter, pastikan warnanya juga biru tua */
+/* Jika ada ikon di dalam .vision-mission-counter, pastikan warnanya juga biru tua */
 
-.container.facts .facts-counter .fa-check {
+.container.vision-mission .vision-mission-counter .fa-check {
     color: #032a60 !important;
 }
 
-.container.facts .facts-text .h-100,
-.container.facts .facts-counter .h-100 {
+.container.vision-mission .vision-mission-text .h-100,
+.container.vision-mission .vision-mission-counter .h-100 {
     padding: 6rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.facts-text,
-.facts-counter {
+.vision-mission-text,
+.vision-mission-counter {
     /* Menambahkan bayangan (shadow) yang lembut */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     /* Menambahkan transisi agar animasi hover halus */
     transition: all 0.3s ease-in-out;
 }
 
-.facts-text:hover,
-.facts-counter:hover {
+.vision-mission-text:hover,
+.vision-mission-counter:hover {
     /* Efek "zoom" saat di-hover */
     transform: scale(1.1);
     /* Anda bisa ganti 1.03 menjadi 1.05 untuk zoom lebih besar */
@@ -1319,7 +1319,7 @@ p {
    Kelas 'text-white' di HTML seharusnya sudah cukup.
 */
 
-.facts-text .fa-bullseye {
+.vision-mission-text .fa-bullseye {
     color: #FFFFFF;
 }
 
@@ -1328,7 +1328,7 @@ p {
    Pastikan ini ada di CSS Anda.
 */
 
-.container.facts .facts-text .h-100 {
+.container.vision-mission .vision-mission-text .h-100 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1861,9 +1861,11 @@ p {
 /* 1. Jadikan section utama sebagai "jangkar" dan sembunyikan overflow */
 
 .Business-section {
-    background-color: #f0f0f0;
-    position: relative;
-    overflow: hidden;
+    background-image: url("../img/gallery/white-bg-tp.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
 }
 
 
@@ -2295,8 +2297,11 @@ p {
  */
 
 .legality-section {
-    background: #bfd6f18c;
-    /* Latar belakang abu-abu muda */
+    background-image: url("../img/gallery/white-bg-tp.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
 }
 
 .legality-list {
@@ -2508,7 +2513,7 @@ p {
  */
 
 .location-section {
-    background-color: #f0f0f0;
+    background-color: #f0f6ff;
     /* Latar abu-abu muda */
 }
 
@@ -2775,6 +2780,7 @@ p {
 
 /* =========================================
    RESPONSIVE GALERI (Max Lebar 991px)
+   Target: 2 Kartu Per Baris
    ========================================= */
 
 @media only screen and (max-width: 991px) {
@@ -2783,62 +2789,65 @@ p {
         padding-top: 60px !important;
         padding-bottom: 60px !important;
     }
-    /* 2. LAYOUT GRID (2 Kolom di HP) */
-    /* Mengubah row agar bisa menampung 2 item per baris */
+    /* 2. PAKSA GRID 2 KOLOM */
     .gallery-section .row.g-4 {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px !important;
-        /* Jarak antar kartu lebih rapat */
-        justify-content: space-between;
-        /* Ratakan kiri kanan */
+        display: flex !important;
+        flex-wrap: wrap !important;
+        /* Wajib wrap agar item turun ke bawah */
+        gap: 10px !important;
+        /* Jarak antar kartu */
+        justify-content: center;
+        /* Rata tengah */
+        margin-right: 0 !important;
+        margin-left: 0 !important;
     }
+    /* Target col-md-6 atau col-lg-4 di dalam gallery section */
     .gallery-section .col-lg-4 {
-        /* Lebar kartu: Sekitar 48% (setengah layar minus gap) */
-        width: 48% !important;
-        flex: 0 0 48% !important;
-        max-width: 48% !important;
+        /*
+           Rumus: (100% lebar layar - total gap) / 2
+           Kita gunakan calc() agar presisi.
+           Gap total kira-kira 10px. Jadi 50% - 5px aman.
+        */
+        width: calc(50% - 10px) !important;
+        flex: 0 0 calc(50% - 10px) !important;
+        max-width: calc(50% - 10px) !important;
+        padding: 0 !important;
+        /* Reset padding bawaan bootstrap */
         margin: 0 !important;
-        /* Reset margin */
     }
-    /* 3. PERBAIKAN KARTU GALERI (Kecilkan agar muat) */
+    /* 3. PERBAIKAN KARTU */
     .gallery-card {
         border-radius: 8px !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        height: 100% !important;
+        /* Pastikan tinggi sama */
     }
     .gallery-card .gallery-image {
-        height: 120px !important;
-        /* Kurangi tinggi gambar */
+        height: 110px !important;
+        /* Gambar kecil proporsional */
+        width: 100% !important;
     }
     .gallery-card .gallery-content {
-        padding: 12px !important;
-        /* Kurangi padding dalam */
+        padding: 10px !important;
     }
-    /* 4. TYPOGRAPHY (Kecilkan Font) */
+    /* 4. TYPOGRAPHY KECIL */
     .gallery-card .gallery-tag {
-        font-size: 9px !important;
-        padding: 3px 6px !important;
-        margin-bottom: 5px !important;
-        border-radius: 4px !important;
+        font-size: 8px !important;
+        padding: 2px 5px !important;
+        margin-bottom: 4px !important;
     }
     .gallery-card .gallery-title {
-        font-size: 13px !important;
-        font-weight: 700;
-        margin-bottom: 5px !important;
-        /* Batasi judul maks 2 baris agar tinggi kartu seragam */
+        font-size: 12px !important;
+        margin-bottom: 4px !important;
+        line-height: 1.3 !important;
+        /* Potong judul jika kepanjangan (2 baris) */
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        text-overflow: ellipsis;
     }
     .gallery-card .gallery-date {
-        font-size: 10px !important;
-        /* Tanggal kecil */
-    }
-    .gallery-card .gallery-date i {
-        font-size: 10px !important;
-        margin-right: 3px !important;
+        font-size: 9px !important;
     }
 }
 
@@ -2851,8 +2860,10 @@ p {
  */
 
 .client-section {
-    background: #bfd6f18c;
-    /* Latar abu-abu muda, sesuaikan tema */
+    background-image: url("../img/gallery/white-bg-tp.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 
@@ -2979,7 +2990,7 @@ p {
     position: relative;
     transition: all 0.3s ease;
     height: 100%;
-    border-left: 5px solid #0d47a1;
+    border-left: 5px solid #032a60;
     /* Aksen Biru Tua di kiri */
     display: flex;
     flex-direction: column;
@@ -3022,14 +3033,14 @@ p {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #0d47a1;
+    border: 2px solid #032a60;
     /* Border foto biru tua */
 }
 
 .testimonial-card .user-info h5 {
     font-size: 1rem;
     font-weight: 700;
-    color: #0d47a1;
+    color: #032a60;
     margin-bottom: 2px;
 }
 
@@ -3056,15 +3067,15 @@ p {
         overflow-x: auto !important;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        gap: 15px;
+        gap: 10px;
         padding-bottom: 30px;
         /* Ruang lebih untuk shadow */
         /* Reset posisi start */
         justify-content: flex-start !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
     }
     .testimonial-section .testimonial-slider::-webkit-scrollbar {
         display: none;
@@ -3380,7 +3391,7 @@ p {
 /* ====== feature-extended css ====== */
 
 .feature-extended-section {
-    background: #DCE8F7;
+    background: #f0f6ff;
 }
 
 .feature-extended-section .single-feature-extended {
