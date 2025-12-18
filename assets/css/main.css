@@ -2051,6 +2051,29 @@ p {
         font-size: 13px !important;
         margin-bottom: 8px !important;
     }
+    /* 4. KECILKAN TOMBOL CTA DI DALAM MODAL */
+    .modal-footer {
+        padding: 10px 15px !important;
+    }
+    .modal-footer .main-btn {
+        width: 100% !important;
+        /* Biar tetap mudah diklik (thumb-friendly) */
+        padding: 10px 15px !important;
+        /* Mengecilkan padding tombol */
+        font-size: 13px !important;
+        /* Mengecilkan font dari standar (biasanya 16px) */
+        height: auto !important;
+        /* Menghapus tinggi kaku */
+        line-height: 1.2 !important;
+        /* Merapatkan jarak teks */
+        letter-spacing: 0px !important;
+        /* Menghilangkan spasi antar huruf berlebih */
+    }
+    /* Jika Anda menggunakan tombol jenis link biasa atau btn-light */
+    .modal-footer .btn {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+    }
 }
 
 
@@ -2856,6 +2879,36 @@ p {
     .gallery-card .gallery-date {
         font-size: 9px !important;
     }
+    /* 5. KHUSUS KARTU CTA DI DALAM GRID 2 KOLOM */
+    .gallery-section .gallery-card[style*="background: linear-gradient"] {
+        min-height: 180px !important;
+        /* Sesuaikan agar tidak terlalu jomplang dengan tinggi kartu foto */
+        padding: 10px !important;
+    }
+    .gallery-section .gallery-card .cta-content i {
+        font-size: 1.5rem !important;
+        /* Perkecil icon camera */
+        margin-bottom: 5px !important;
+    }
+    .gallery-section .gallery-card .cta-content h4 {
+        font-size: 11px !important;
+        /* Seukuran dengan .gallery-title */
+        margin-bottom: 5px !important;
+    }
+    .gallery-section .gallery-card .cta-content p {
+        font-size: 9px !important;
+        /* Seukuran dengan .gallery-date */
+        margin-bottom: 10px !important;
+        line-height: 1.2 !important;
+    }
+    .gallery-section .gallery-card .cta-content .main-btn {
+        font-size: 9px !important;
+        padding: 6px 10px !important;
+        height: auto !important;
+        line-height: 1 !important;
+        width: 100% !important;
+        /* Tombol memenuhi lebar kartu */
+    }
 }
 
 
@@ -3128,6 +3181,25 @@ p {
     }
     .testimonial-card .user-info small {
         font-size: 11px !important;
+    }
+    .testimoni-footer .main-btn {
+        width: 100% !important;
+        /* Biar tetap mudah diklik (thumb-friendly) */
+        padding: 10px 15px !important;
+        /* Mengecilkan padding tombol */
+        font-size: 13px !important;
+        /* Mengecilkan font dari standar (biasanya 16px) */
+        height: auto !important;
+        /* Menghapus tinggi kaku */
+        line-height: 1.2 !important;
+        /* Merapatkan jarak teks */
+        letter-spacing: 0px !important;
+        /* Menghilangkan spasi antar huruf berlebih */
+    }
+    /* Jika Anda menggunakan tombol jenis link biasa atau btn-light */
+    .testimoni-footer .btn {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
     }
 }
 
@@ -4615,6 +4687,9 @@ p {
 }
 
 
+/* Class untuk menyembunyikan tombol */
+
+
 /* * Floating WhatsApp Button Styling 
  */
 
@@ -4674,4 +4749,33 @@ p {
 
 .text-primary {
     color: #032a60 !important;
+}
+
+@media only screen and (max-width: 991px) {
+    /* 1. Header Area Default (Saat di paling atas) */
+    .navbar-area {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1050;
+        /* Warna solid awal saat di posisi 0 */
+        /* background-color: #032a60 !important; */
+        transition: all 0.3s ease-in-out;
+        padding: 15px 0 !important;
+    }
+    /* 2. Style saat di-scroll (Class .sticky ditambahkan lewat JS) */
+    .navbar-area.sticky {
+        /* Buat background transparan atau semi-transparan */
+        background-color: rgba(3, 42, 96, 0.267) !important;
+        /* Efek blur kaca (Frosted Glass) agar teks tetap terbaca */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 10px 0 !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    /* 3. Penyesuaian Hero Section agar tidak nabrak */
+    #home.hero-section {
+        padding-top: 100px !important;
+    }
 }
