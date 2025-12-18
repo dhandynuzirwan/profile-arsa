@@ -246,7 +246,7 @@ p {
     -webkit-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
     border: none;
-    background: #032a60;
+    background: #ff9800;
     overflow: hidden;
 }
 
@@ -317,6 +317,13 @@ p {
 .scroll-top:hover {
     color: #fff;
     background: rgba(88, 100, 255, 0.8);
+}
+
+@media only screen and (max-width: 768px) {
+    .scroll-top {
+        right: 30px;
+        bottom: 80px;
+    }
 }
 
 @keyframes animation1 {
@@ -4659,7 +4666,7 @@ p {
     .float-wa {
         width: 50px;
         height: 50px;
-        bottom: 90px;
+        bottom: 140px;
         right: 30px;
         font-size: 24px;
     }
